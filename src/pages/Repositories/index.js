@@ -5,19 +5,24 @@ export default function Repositories() {
     const [repositories, setRepositories] = useState([]);
 
     useEffect(() => {
-        const repoNames = localStorage.getItem('repoName');
+        let repoNames = localStorage.getItem('repoName');
+        repoNames = JSON.parse(repoNames);
         setRepositories(repoNames);
-    }, [])
+        console.log(repositories);
+    }, []);
 
 
     return(
         <S.Container>
             <S.Title>Repos</S.Title>
-            <S.List>
-                <S.ListItem>Repositório 1</S.ListItem>
-                <S.ListItem>Repositório 2</S.ListItem>
-                <S.ListItem>Repositório 3</S.ListItem>
-                <S.ListItem>Repositório 4</S.ListItem>
+            <S.List>                                
+                {
+                    repositories.map(repository => {
+                        return(
+                            <S.ListItem>{ repository }</S.ListItem>
+                        )
+                    })
+                }
             </S.List>
         </S.Container>
     )

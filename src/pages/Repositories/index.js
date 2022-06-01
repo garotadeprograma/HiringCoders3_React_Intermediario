@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 
 export default function Repositories() {
+    const [repositories, setRepositories] = useState([]);
+
     useEffect(() => {
         const repoNames = localStorage.getItem('repoName');
+        setRepositories(repoNames);
     }, [])
 
 

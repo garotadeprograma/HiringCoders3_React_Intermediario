@@ -7,7 +7,15 @@ export default function HelloWorld()
     const [ usuario, setUsuario ] = useState('');
 
     function handlePesquisa() {
-        axios.get(`https://api.github.com/users/${usuario}/repos`).then(response => console.log(response))
+        axios.get(`https://api.github.com/users/${usuario}/repos`).then(response => {
+            const repo = response.data;
+            const repoName = [];
+
+            repo.map(repository => {
+                repoName.push(repository.name);
+            });
+            console.log(repoName);
+        })
     }
 
     return(

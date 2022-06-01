@@ -14,7 +14,7 @@ export default function HelloWorld()
             repo.map(repository => {
                 repoName.push(repository.name);
             });
-            console.log(repoName);
+            localStorage.setItem('repoName', JSON.stringify(repoName))
         })
     }
 

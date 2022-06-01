@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import * as S from './styled'
+import * as S from './styled';
+import { useNavigate } from 'react-router-dom';
 
 export default function HelloWorld()
 {
     const [ usuario, setUsuario ] = useState('');
+    const navigate = useNavigate();
 
     function handlePesquisa() {
         axios.get(`https://api.github.com/users/${usuario}/repos`).then(response => {
@@ -15,6 +17,7 @@ export default function HelloWorld()
                 repoName.push(repository.name);
             });
             localStorage.setItem('repoName', JSON.stringify(repoName))
+            navigate('./repositories');
         })
     }
 

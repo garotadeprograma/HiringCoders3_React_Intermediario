@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 
 export default function Repositories() {
+    useEffect(() => {
+        const repoNames = localStorage.getItem('repoName');
+    }, [])
+
+
     return(
         <S.Container>
             <S.Title>Repos</S.Title>
